@@ -17,9 +17,9 @@ public class ParserCsvToJson {
     static final String fileName = "data.csv";
     static final String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
 
-    private static void writeString(String json){
+    static void writeString(String json, String fileName){
         try (FileWriter file = new
-                FileWriter("data.json")) {
+                FileWriter(fileName)) {
             file.write(json);
             file.flush();
         } catch (IOException e) {
@@ -63,7 +63,7 @@ public class ParserCsvToJson {
         list.forEach((value) -> System.out.println(value.toString()));
 
 //        System.out.println(listToJson(list));
-        writeString(listToJson(list));
+        writeString(listToJson(list),"data.json");
 
     }
 

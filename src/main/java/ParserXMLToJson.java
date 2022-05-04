@@ -17,62 +17,17 @@ public class ParserXMLToJson {
 
     public static final String fileName = "data.xml";
 
-    private static List<Employee> read(Node node) {
-        List<Employee> employees = new LinkedList<>();
-        NodeList nodeList = node.getChildNodes();
-        for (int nodeRun = 0; nodeRun < nodeList.getLength(); nodeRun++) {
-            long id = 0;
-            String firstName = "";
-            String lastName = "";
-            String country = "";
-            int age = 0;
-
-            Node node_ = nodeList.item(nodeRun);
-            if (Node.ELEMENT_NODE == node_.getNodeType()) {
-                System.out.println("Узел: " + node_.getNodeName() +
-                        " Значение: " + node_.getChildNodes().item(0).getTextContent());
-
-                if (node_.getNodeName().equals("id")) {
-                    id = Long.parseLong(node_.getChildNodes().item(0).getTextContent());
-                }
-                if (node_.getNodeName().equals("firstName")) {
-                    firstName = node_.getChildNodes().item(0).getTextContent();
-                }
-                if (node_.getNodeName().equals("lastName")) {
-                    lastName = node_.getChildNodes().item(0).getTextContent();
-                }
-                if (node_.getNodeName().equals("country")) {
-                    country = node_.getChildNodes().item(0).getTextContent();
-                }
-                if (node_.getNodeName().equals("age")) {
-                    age = Integer.parseInt(node_.getChildNodes().item(0).getTextContent());
-                    employees.add(new Employee(id, firstName, lastName, country, age));
-                    System.out.println(employees);
-                }
-                read(node_);
-            }
-        }
-
-        return employees;
-    }
-
-    private static List<Employee> parseXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
+      private static List<Employee> parseXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
 
         ArrayList<Employee> employees = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new File(fileName));
 
-        Node root = doc.getDocumentElement();
-        System.out.println("Корневой элемент: " + root.getNodeName());
-
         NodeList employeeElements = doc.getDocumentElement().getElementsByTagName("employee");
-        System.out.println(employeeElements.getLength());
+
         for (int i = 0; i < employeeElements.getLength(); i++) {
             Node employee = employeeElements.item(i);
-
-            System.out.println(employee.getChildNodes().item(3).getTextContent());
-
 
             employees.add(new Employee(Long.parseLong(employee.getChildNodes().item(1).getTextContent()),
                     employee.getChildNodes().item(3).getTextContent(),
@@ -82,32 +37,13 @@ public class ParserXMLToJson {
 
         }
 
-
-        System.out.println(employees);
-
-
-//        for (int nodeRun = 0; nodeRun < doc.; nodeRun++) {
-//            long id = 0;
-//
-//            Node node_ = nodeList.item(nodeRun);
-//            if (Node.ELEMENT_NODE == node_.getNodeType()) {
-//                System. out.println("Узел: " + node_.getNodeName() +
-//                        " Значение: " + node_.getChildNodes().item(0).getTextContent());
-//
-//
-//                read(node_);
-//            }
-//        }
-
-
-//        read(root);
-
-        return null;
+        return employees;
     }
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
 
         parseXML(fileName);
+        ParserCsvToJson.writeString(parseXML(fileName).toString(),"data2.json");
 
     }
 

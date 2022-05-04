@@ -20,11 +20,11 @@ public class Employee {
     @Override
     public String toString() {
         return "{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", country='" + country + '\'' +
-                ", age=" + age +
+                "\"id\":" + id +
+                ",\"firstName\":" + "\"" + firstName + "\"" +
+                ",\"lastName\":" + "\"" + lastName + "\"" +
+                ",\"country\":" + "\"" + country + "\"" +
+                ",\"age\":" + age +
                 '}';
     }
 }
