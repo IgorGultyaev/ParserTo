@@ -1,4 +1,7 @@
 # Project exclude paths
 /target/
-data2.json
+
 data.json
+
+data2.json
+
