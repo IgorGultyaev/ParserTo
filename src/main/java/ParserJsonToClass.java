@@ -1,8 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -19,11 +17,11 @@ public class ParserJsonToClass {
 
         List<Employee> employees = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
-        JSONArray lang= (JSONArray) jsonParser.parse(json);
+        JSONArray lang = (JSONArray) jsonParser.parse(json);
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
-        for (Object jsonObj:lang) {
+        for (Object jsonObj : lang) {
 
             Employee employee = gson.fromJson(jsonObj.toString(), Employee.class);
             employees.add(employee);
@@ -44,7 +42,7 @@ public class ParserJsonToClass {
             e.printStackTrace();
             return null;
         }
-        return json.toString().replaceAll("\\s+","");
+        return json.toString().replaceAll("\\s+", "");
     }
 
     public static void main(String[] args) throws ParseException {

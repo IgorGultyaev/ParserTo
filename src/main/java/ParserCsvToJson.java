@@ -17,7 +17,7 @@ public class ParserCsvToJson {
     static final String fileName = "data.csv";
     static final String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
 
-    static void writeString(String json, String fileName){
+    static void writeString(String json, String fileName) {
         try (FileWriter file = new
                 FileWriter(fileName)) {
             file.write(json);
@@ -32,7 +32,8 @@ public class ParserCsvToJson {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        Type listType = new TypeToken<List<Employee>>() {}.getType();
+        Type listType = new TypeToken<List<Employee>>() {
+        }.getType();
         return gson.toJson(list, listType);
     }
 
@@ -55,6 +56,7 @@ public class ParserCsvToJson {
             return null;
         }
     }
+
     public static void main(String[] args) {
 
         List<Employee> list = parseCSV(columnMapping, fileName);
@@ -62,8 +64,7 @@ public class ParserCsvToJson {
         assert list != null;
         list.forEach((value) -> System.out.println(value.toString()));
 
-//        System.out.println(listToJson(list));
-        writeString(listToJson(list),"data.json");
+        writeString(listToJson(list), "data.json");
 
     }
 
