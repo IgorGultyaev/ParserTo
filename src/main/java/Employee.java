@@ -27,4 +27,16 @@ public class Employee {
                 ",\"age\":" + age +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || !obj.getClass().equals(Employee.class)) {
+            return false;
+        }
+        Employee comparedEmployee = (Employee) obj;
+        return toString().equals(comparedEmployee.toString());
+    }
 }

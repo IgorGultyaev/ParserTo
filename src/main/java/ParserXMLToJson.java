@@ -15,7 +15,7 @@ public class ParserXMLToJson {
 
     public static final String fileName = "data.xml";
 
-    private static List<Employee> parseXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
+    static List<Employee> parseXML(String fileName) throws ParserConfigurationException, IOException, SAXException {
 
         ArrayList<Employee> employees = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

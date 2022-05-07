@@ -13,7 +13,7 @@ import java.util.List;
 public class ParserJsonToClass {
     private static final String fileName = "new_data.json";
 
-    private static List<Employee> jsonToList(String json) throws ParseException {
+    static List<Employee> jsonToList(String json) throws ParseException {
 
         List<Employee> employees = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();

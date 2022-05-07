@@ -28,7 +28,7 @@ public class ParserCsvToJson {
 
     }
 
-    private static String listToJson(List<Employee> list) {
+    static String listToJson(List<Employee> list) {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
